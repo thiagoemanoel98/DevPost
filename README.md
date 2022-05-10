@@ -4,15 +4,16 @@
 Uma rede social simples desenvolvida em React Native durante o curso Fabrica de Aplicativos, os usuários podem realizar suas postagens no App, curtir outras postagens e alterar informações pesosais (exemplo: nome e foto do perfil). 
 
 <p align="center">
-    <img width = "300" height= "600" src = "assets/to_readme/app_1.gif">
-    <img width = "300" height= "600" src = "assets/to_readme/app_2.gif">
+    <img width = "150" height= "300" src = "src/assets/to_readme/print1.png">
+    <img width = "150" height= "300" src = "src/assets/to_readme/print 2.png">
 </p>
-
 
 <p align="center">
-    <img width = "300" height= "600" src = "src/assets/to_readme/print1.png">
-    <img width = "300" height= "600" src = "src/assets/to_readme/print 2.png">
+    <img width = "150" height= "300" src = "src/assets/to_readme/print 3.png">
+    <img width = "150" height= "300" src = "src/assets/to_readme/print 4.png">
 </p>
+
+
 
 ## Tecnologias
 - React Native (v0.68.2)
