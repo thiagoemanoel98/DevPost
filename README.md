@@ -1,7 +1,7 @@
 # DevPost
 
 
-Uma rede social simples desenvolvida em React Native durante o curso Fabrica de Aplicativos, os usuários podem realizar postagens na rede, curtir outros posts e alterar informações pesosais (exemplo: nome e foto do perfil). 
+Uma rede social simples desenvolvida em React Native durante o curso Fabrica de Aplicativos. No aplicativo os usuários podem: realizar postagens na rede, curtir outros posts, buscar outros usuários e alterar informações pessoais (exemplo: nome e foto do perfil). 
 
 ## Screenshots
 
