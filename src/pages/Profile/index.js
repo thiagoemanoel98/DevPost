@@ -129,7 +129,7 @@ function Profile(){
         const storageRef = storage().ref('users').child(user?.uid);
         const url = await storageRef.getDownloadURL()
         .then(async (image) => {
-            console.log('Imagem recebida: ', image);
+            //console.log('Imagem recebida: ', image);
             const postDocs = await firestore().collection('posts')
             .where('userId', '==', user.uid).get();
 
