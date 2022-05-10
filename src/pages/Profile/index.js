@@ -1,7 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {View, Text, Modal, Platform} from 'react-native';
 
+import {launchImageLibrary} from 'react-native-image-picker';
+
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 
 import {AuthContext} from '../../contexts/auth';
 import Header from '../../components/Header';
@@ -27,7 +30,22 @@ function Profile(){
 
     const [name, setName] = useState(user?.name);
     const [open, setOpen] = useState(false);
-    const [url, setUrl] = useState('https://sujeitoprogramador.com/steve.png');
+    const [url, setUrl] = useState(null);
+
+    useEffect(() => {
+        async function loadAvatar(){
+            try{
+                let rsp = await storage().ref('users').child(user?.uid).getDownloadURL();
+                setUrl(rsp);
+            }catch{ 
+                console.log('Error pegar foto')
+            }
+        }
+
+        loadAvatar();
+
+        return () => {};
+    }, [])
 
     async function handleSignOut(){
         await signOut();
@@ -64,23 +82,77 @@ function Profile(){
 
         setUser(data);
         storageUser(data);
-        setOpen(false);
-
     }
+
+    const uploadFile = ()=> {
+        const options = {
+            noData: true,
+            mediaType: 'photo'
+        };
+
+        launchImageLibrary(options, response => {
+            if(response.didCancel){
+                console.log("cancelou!");
+            }else if(response.error){
+                console.log("Ops parece que deu algum erro")
+            }else{
+                uploadFileFirebase(response)
+                .then(() => {
+                    uploadAvatarPosts();    
+                })
+
+                setUrl(response.assets[0].uri)
+            }
+        })
+    }
+
+    const getFilePath = (response) => {
+        // Extrair a URL da foto
+        return response.assets[0].uri;
+    }
+
+    const uploadFileFirebase = async (response) => {
+        const fileSource = getFilePath(response);
+        //console.log(fileSource)
+
+        const storageRef = storage().ref('users').child(user?.uid);
+        
+        return await storageRef.putFile(fileSource)
+    }
+        
+    // Percorre todos os posts do usuário e atualiza a foto
+    const uploadAvatarPosts = async () => {
+        const storageRef = storage().ref('users').child(user?.uid);
+        const url = await storageRef.getDownloadURL()
+        .then(async (image) => {
+            console.log('Imagem recebida: ', image);
+            const postDocs = await firestore().collection('posts')
+            .where('userId', '==', user.uid).get();
+
+            // Percorrer e trocar a url da img
+            postDocs.forEach(async (doc) => {
+                await firestore().collection('posts').doc(doc.id).update({
+                    avatarUrl: image
+                })
+            })
+        }).catch((error) => {
+            alert(error);
+        })
+    } 
 
     return(
         <Container>
             <Header/>
 
             { url ? (
-                <UploadButton onPress = {() => alert('CLICOU1')}>
+                <UploadButton onPress = {() => uploadFile()}>
                     <UploadText>+</UploadText>
                     <Avatar 
                         source = {{uri: url}}
                     />
                 </UploadButton>
             ): (    
-                <UploadButton>
+                <UploadButton onPress = {() => uploadFile()}>
                     <UploadText>+</UploadText>
                     <Avatar 
                         source = {{uri: url}}

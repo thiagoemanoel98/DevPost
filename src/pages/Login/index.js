@@ -66,6 +66,7 @@ function Login(){
                     placeholder = '*********'
                     value = {password}
                     onChangeText = {(text) => setPassword(text)}
+                    secureTextEntry = {true}
                 />
     
                 <Button onPress = {handleSignIn}>
