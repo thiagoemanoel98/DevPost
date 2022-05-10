@@ -1,19 +1,21 @@
 # DevPost
 
 
-Uma rede social simples desenvolvida em React Native durante o curso Fabrica de Aplicativos, os usuários podem realizar suas postagens no App, curtir outras postagens e alterar informações pesosais (exemplo: nome e foto do perfil). 
+Uma rede social simples desenvolvida em React Native durante o curso Fabrica de Aplicativos, os usuários podem realizar postagens na rede, curtir outros posts e alterar informações pesosais (exemplo: nome e foto do perfil). 
+
+## Screenshots
 
 <p align="center">
-    <img width = "150" height= "300" src = "src/assets/to_readme/print1.png">
-    <img width = "150" height= "300" src = "src/assets/to_readme/print 2.png">
+    <img width = "200" height= "400" src = "src/assets/to_readme/print1.png">
+    <img width = "200" height= "400" src = "src/assets/to_readme/print 2.png">
+    <img width = "200" height= "400" src = "src/assets/to_readme/print5.png">
 </p>
 
 <p align="center">
-    <img width = "150" height= "300" src = "src/assets/to_readme/print 3.png">
-    <img width = "150" height= "300" src = "src/assets/to_readme/print 4.png">
+    <img width = "200" height= "400" src = "src/assets/to_readme/print 3.png">
+    <img width = "200" height= "400" src = "src/assets/to_readme/Print4.png">
+    <img width = "200" height= "400" src = "src/assets/to_readme/print .png">
 </p>
-
-
 
 ## Tecnologias
 - React Native (v0.68.2)
@@ -33,8 +35,8 @@ ___
 Clone o projeto e acesse a sua pasta: 
 
 ```sh
-$ git clone https://github.com/thiagoemanoel98/conversor-moedas-app.git
-$ cd conversor-moedas-app
+$ git clone https://github.com/thiagoemanoel98/DevPost.git
+$ cd DevPost
 ```
 
 Instale as dependências do projeto e inicie:
