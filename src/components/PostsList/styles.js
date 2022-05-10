@@ -21,6 +21,7 @@ export const Name = styled.Text`
     color: #353840;
     font-size: 18px;
     font-weight: bold;
+    margin-left: 5px;
 
 `;
 

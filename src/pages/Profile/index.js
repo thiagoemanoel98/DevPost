@@ -33,10 +33,14 @@ function Profile(){
     const [url, setUrl] = useState(null);
 
     useEffect(() => {
+        let isActive = true;
         async function loadAvatar(){
             try{
-                let rsp = await storage().ref('users').child(user?.uid).getDownloadURL();
-                setUrl(rsp);
+                if(isActive){
+                    let rsp = await storage().ref('users').child(user?.uid).getDownloadURL();
+                    setUrl(rsp);
+                }
+                
             }catch{ 
                 console.log('Error pegar foto')
             }
@@ -44,7 +48,7 @@ function Profile(){
 
         loadAvatar();
 
-        return () => {};
+        return () => isActive = false;
     }, [])
 
     async function handleSignOut(){

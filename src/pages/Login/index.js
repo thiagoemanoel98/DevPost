@@ -1,5 +1,8 @@
 import React, {useState, useContext} from 'react';
 import {View, Text, Keyboard, ActivityIndicator} from 'react-native';
+import *  as Animatable from 'react-native-animatable';
+
+const TitleAnimated = Animatable.createAnimatableComponent(Title);
 
 import { 
     Container, 
@@ -52,9 +55,9 @@ function Login(){
     if(login){
         return(
             <Container>
-                <Title>
+                <TitleAnimated animation='flipInY'>
                     Dev<Text style = {{color: '#E52246'}}>Post</Text>
-                </Title>
+                </TitleAnimated>
     
                 <Input 
                     placeholder = 'seuemail@exemplo.com'
@@ -87,9 +90,9 @@ function Login(){
     }else{
         return(
             <Container>
-                <Title>
+                <TitleAnimated animation='flipInX'>
                     Dev<Text style = {{color: '#E52246'}}>Post</Text>
-                </Title>
+                </TitleAnimated>
     
                 <Input 
                     placeholder = 'Nome'
@@ -107,6 +110,7 @@ function Login(){
                     placeholder = '*********'
                     value = {password}
                     onChangeText = {(text) => setPassword(text)}  
+                    secureTextEntry = {true}
                 />
     
                 <Button onPress = {handleSignUp}>

@@ -17,7 +17,8 @@ export const Name = styled.Text`
 
 export const Email = styled.Text`
     color: #fff;
-    margin-block: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
     margin-top: 10px;
     font-size: 20px;
     font-style: italic;
